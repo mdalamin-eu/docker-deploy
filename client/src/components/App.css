@@ -1,0 +1,115 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    background-color: rgb(18, 129, 233);
+    background-image: linear-gradient(62deg, rgb(9, 122, 228) 0%, rgb(104, 161, 247) 100%);
+  }
+  
+  .App {
+    max-width: 1000px;
+    margin: 50px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  header {
+    font-size: 40px;
+    margin-bottom: 30px;
+    font-weight: bold;
+  }
+  
+  form {
+    min-width: 600px;
+    text-align:center;
+    padding: 50px;
+    background-color: white;
+    box-shadow: 4px 5px 5px 1px rgba(0,0,0,0.75);
+    border-radius: 3px;
+  }
+  
+  .form-group {
+    margin: 15px 0;
+  }
+  
+  .form-field {
+    height: 35px;
+    min-width: 265px;
+    font-size: 22px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 3px;
+  }
+  
+  .button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  button:disabled {
+    background-color: grey;
+    cursor: not-allowed;
+  }
+  
+  .error-msg {
+    color: red;
+    margin: 5px 0;
+    font-weight: bold;
+  }
+
+
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  form li + li {
+    margin-top: 1em;
+  }
+  
+  
+  input, 
+  textarea {
+    /* To make sure that all text fields have the same font settings
+       By default, textareas have a monospace font */
+    font: 1em sans-serif;
+  
+    /* Uniform text field size */
+    width: 300px;
+    box-sizing: border-box;
+  
+    /* Match form field borders */
+    border: 1px solid #999;
+  }
+  
+  input:focus, 
+  textarea:focus {
+    /* Additional highlight for focused elements */
+    border-color: #000;
+  }
+  
+  textarea {
+    /* Align multiline text fields with their labels */
+    vertical-align: top;
+  
+    /* Provide space to type some text */
+    height: 5em;
+  }
+  
+  
