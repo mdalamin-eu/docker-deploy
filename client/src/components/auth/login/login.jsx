@@ -1,5 +1,8 @@
 import React,{Component} from 'react'
 import axios from 'axios';
+import {withRouter} from "react-router-dom"
+import {authenticate, isAuth} from '../../utlis/auth'
+
 import '../../App.css'
 
 class  loginForm extends Component  {
@@ -14,13 +17,20 @@ class  loginForm extends Component  {
       handlepasswordInput = (e) => {
           this.setState({...this.state, password:e.target.value })
       }
+
+      componentDidMount(){
+          if(isAuth()&& isAuth().loggedin){
+              this.props.history.push('/')
+          }
+      }
+
     handleSubmit = (event) => {
  event.preventDefault()
  const{email,password} =this.state
 
  axios.post(`api/v1/user/login`,{email,password})
  .then(respons=>{
-     console.log(respons);
+     authenticate(respons,()=> isAuth() && isAuth().loggedin ? this.props.history.push('/'):'');
      console.log(respons.data);
  })
     }
@@ -29,11 +39,13 @@ class  loginForm extends Component  {
 
    render() {
        return(
-           <div>
+           <div className="App">
                <form onSubmit={this.handleSubmit}>
                <input name ='email' type="email" value={this.state.email} onChange={this.handleemailInput} placeholder="enter your email" className="emailInput"/>
       <input name ='password' type="password" value={this.state.password} onChange={this.handlepasswordInput} placeholder="enter your password" className="passwordInput"/>
       <input type="submit" value="Submit" />
+      {console.log(isAuth())}
+      {JSON.stringify(isAuth())}
                </form>
  
            </div>
@@ -41,4 +53,4 @@ class  loginForm extends Component  {
    }
 }
 
-export default  loginForm
+export default  withRouter(loginForm);
