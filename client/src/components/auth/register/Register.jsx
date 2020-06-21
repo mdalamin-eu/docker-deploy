@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import ValidationMessage from './validMsg'
 import axios from 'axios';
+import {isAuth} from '../../utlis/auth'
+import { withRouter } from 'react-router-dom';
 
 class Register extends Component {
 
@@ -167,6 +169,11 @@ class Register extends Component {
             this.setState({...this.state, birthdate:e.target.value})
         }
 
+        componentDidMount(){
+            if(isAuth() && isAuth().loggedin){
+                this.props.history.push('/')
+            }
+        }
 
         createAnAccount = (event) => {
             event.preventDefault()
@@ -255,4 +262,4 @@ class Register extends Component {
     );
 }
 }
-export default  Register
+export default  withRouter(Register)
