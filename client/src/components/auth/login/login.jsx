@@ -31,7 +31,7 @@ class  loginForm extends Component  {
  axios.post(`api/v1/user/login`,{email,password})
  .then(respons=>{
      authenticate(respons,()=> isAuth() && isAuth().loggedin ? this.props.history.push('/'):'');
-     console.log(respons.data);
+     
  })
     }
 
@@ -44,7 +44,7 @@ class  loginForm extends Component  {
                <input name ='email' type="email" value={this.state.email} onChange={this.handleemailInput} placeholder="enter your email" className="emailInput"/>
       <input name ='password' type="password" value={this.state.password} onChange={this.handlepasswordInput} placeholder="enter your password" className="passwordInput"/>
       <input type="submit" value="Submit" />
-      {console.log(isAuth())}
+     
       {JSON.stringify(isAuth())}
                </form>
  
