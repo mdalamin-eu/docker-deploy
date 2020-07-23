@@ -15,4 +15,21 @@ services:
         volumes:
             - /app/node_modules
             - ./client:/app
+       
         command: npm start
+
+
+    server:
+            tty: true
+            build: ./server
+            environment:
+                - APP_SERVER_PORT=${APP_SERVER_PORT}
+         
+            expose: 
+                - ${APP_SERVER_PORT}
+            ports: 
+                - ${APP_SERVER_PORT}:${APP_SERVER_PORT}
+            volumes:
+                - /appserver/node_modules
+                - ./server:/appserver
+            command: npm start

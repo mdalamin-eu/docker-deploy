@@ -1,8 +1,8 @@
 # Specify a base image
 
-FROM node:alpine
+FROM node:alpine as builder
 
-WORKDIR  /usr/alamin
+WORKDIR  '/appserver'
 
 # install some depenendencies
 COPY ./package.json ./ 
