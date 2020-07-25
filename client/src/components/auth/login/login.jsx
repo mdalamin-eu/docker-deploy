@@ -28,7 +28,7 @@ class  loginForm extends Component  {
  event.preventDefault()
  const{email,password} =this.state
 
- axios.post(`api/v1/user/login`,{email,password})
+ axios.post(`user/login`,{email,password})
  .then(respons=>{
      authenticate(respons,()=> isAuth() && isAuth().loggedin ? this.props.history.push('/'):'');
      
