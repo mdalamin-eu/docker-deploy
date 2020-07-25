@@ -15,7 +15,7 @@ app.use(morgan());
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
-app.use('/api/v1/user',User);
+app.use('/v1/user',User);
 
 mongoose.connect(process.env.DATABASE_CLOUD, {useNewUrlParser: true}).then(()=> console.log('DB connected'))
 .catch((err)=> console.log(err))

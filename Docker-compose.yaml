@@ -1,40 +1,20 @@
-version:  '3'
-
-services:
-   
-  
-    server:
-            tty: true
-            build: ./server
-            environment:
-                - APP_SERVER_PORT=${APP_SERVER_PORT}
-         
-            expose: 
-                - ${APP_SERVER_PORT}
+version: '3'
+services: 
+    nginx:
+            restart: always
+            build: 
+                 context: ./nginx
             ports: 
-                - ${APP_SERVER_PORT}:${APP_SERVER_PORT}
-            volumes:
-                - /appserver/node_modules
-                - ./server:/appserver
-            command: npm start
-
-    client:
-        tty: true
-        build: ./client
-        environment:
-            - REACT_APP_PORT=${REACT_APP_PORT}
-     
-        expose: 
-            - ${REACT_APP_PORT}
-        ports: 
-            - ${REACT_APP_PORT}:${REACT_APP_PORT}
-        volumes:
-            - /app/node_modules
-            - ./client:/app
-        links: 
-            - server
-        command: npm start
-
-          
-            
-           
+                  - '3050:80'
+    api: 
+         build: 
+             context: ./server
+         volumes:
+              - /app/node_modules
+              - ./server:/app
+    client: 
+           build: 
+                context: ./client
+           volumes:
+                - /app/node_modules
+                - ./client:/app

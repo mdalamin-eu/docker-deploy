@@ -2,7 +2,7 @@
 
 FROM node:alpine as builder
 
-WORKDIR  '/appserver'
+WORKDIR  '/app'
 
 # install some depenendencies
 COPY ./package.json ./ 
