@@ -3,7 +3,7 @@ services:
   - docker
 before_install:
     - sudo apt-get update -qq
-    - sudo apt-get install -qq node_js0.8.21
+    - sudo apt-get install -qq  nodejs
 node_js:
         - 0.8.21
 script:
