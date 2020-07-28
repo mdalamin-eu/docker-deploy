@@ -1,8 +1,12 @@
 sudo: required
 services:
   - docker
-language: node_js
-after_success:
+before_install:
+    - sudo apt-get update -qq
+    - sudo apt-get install -qq python3.2 python2.7
+node_js:
+        - 0.8.21
+script:
   - docker build -t 0442438792/multi-client ./client
   - docker build -t 0442438792/multi-nginx ./nginx
   - docker build -t 0442438792/multi-server ./server
