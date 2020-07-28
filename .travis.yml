@@ -1,6 +1,7 @@
 sudo: required
 services:
   - docker
+language: node_js
 after_success:
   - docker build -t 0442438792/multi-client ./client
   - docker build -t 0442438792/multi-nginx ./nginx
